@@ -1,19 +1,17 @@
 
-var findLocation = new Promise(function(resolve, reject) {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(resolve,cantFind);
-    }
-    function cantFind(error) { 
-        if (error.code == error.PERMISSION_DENIED) {
-            reject("you denied me :-(");
-        } 
-        else {
-            reject('err code: '+error.code);
+function findLocation() {
+    return new Promise(function(resolve, reject) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(resolve,cantFind);
         }
-    } 
-});
+        function cantFind(error) { 
+            var errText = error.code == error.PERMISSION_DENIED ? "you denied me :-(" : 'err code: '+error.code;
+            reject(errText);
+        } 
+    });
+}
 
-findLocation.then(getMeteo).catch(function(err) { console.log(err) });
+findLocation().then(getMeteo).catch(function(err) { console.log(err) });
 
 function getMeteo(position) {
     var lat = position.coords.latitude;
