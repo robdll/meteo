@@ -3,3 +3,8 @@ html, body {
   height: 100%;
   background: gray;
 }
+
+@font-face {
+  font-family: 'digital';
+  src: url('../resources/digital.ttf');
+}
