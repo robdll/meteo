@@ -12,19 +12,21 @@
   <script type="text/javascript" src="https://use.fontawesome.com/4c96e7a2e8.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script type="text/javascript" src="js/geoLocation.js"></script>
+  <script type="text/javascript" src="js/loader.js"></script>
 </head>
 
-<body>
+<body onload="waitForLocation()">
+
   <main>
 
-    <article class="termometer">
-      <div class="screen"> 
-        <p>SOMEWHERE PL</p>
-        <P>C°: 29</P>
-        <P>METRIC:55</P>
-      </div>
-      <p class="switch noselect"> C° / F° </p>
-    </article>
+  <article class="termometer">
+    <div class="screen"> 
+      <p>SOMEWHERE PL</p>
+      <P>C°: 29</P>
+      <P>METRIC:55</P>
+    </div>
+    <p class="switch noselect"> C° / F° </p>
+  </article>
 
   </main>
 </body>
