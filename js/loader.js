@@ -46,7 +46,7 @@ function waitForLocation() {
             return tag;
         }
         function getThermIcon() {
-            var hotLvl = weather.temp % 6 > 4 ? 4 : weather.temp % 6;
+            var hotLvl = weather.temp / 6 > 4 ? 4 : weather.temp / 6;
             hotLvl += 0.5;
             hotLvl = Math.floor(hotLvl);
             return '<i class="fa fa-thermometer-'+ hotLvl + '"></i> ';
