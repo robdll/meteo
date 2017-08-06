@@ -50,6 +50,7 @@ function getMeteo(location) {
         article.appendChild(create('p', getIcon() + weather.temp + getSwitch() ));
         window.hasLocation = true;
         details = create('details');
+        details.classList.add('noselect');
         details.appendChild(create('p', 'humidity: '+weather.humidity ));
         details.appendChild(create('p', 'pressure: '+weather.pressure ));
         details.appendChild(create('p', 'min: '+weather.temp_min ));
@@ -59,17 +60,18 @@ function getMeteo(location) {
         //internal function
         function create(tag, html){ 
             var tag = document.createElement(tag); 
+            tag.classList.add("noselect");
             if(html) { tag.innerHTML = html };
             return tag;
         }
-        function getIcon(){
+        function getIcon() {
             var hotLvl = weather.temp % 6 > 4 ? 4 : weather.temp % 6;
             hotLvl += 0.5;
             hotLvl = Math.floor(hotLvl);
             return '<i class="fa fa-thermometer-'+ hotLvl + '"></i> ';
         }
         function getSwitch() {
-           return ' C' +'<a clas="switch">/F</a>'
+           return ' &#8451;' +'<a class="switch">/&#8457;</a>'
         }
     }
 }
