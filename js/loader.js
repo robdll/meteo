@@ -1,4 +1,6 @@
 
+var celsius = '&#8451;';
+var farenight = '&#8457;';
 
 function waitForLocation() {
     var loaderMsg = document.getElementById("disclaimer");
@@ -33,7 +35,7 @@ function waitForLocation() {
         article.classList.add("weather-screen");
         article.appendChild(create('p', weather.city + ' - ' + weather.country ));
         article.appendChild(create('p', weather.description));
-        article.appendChild(create('p', getThermIcon() + weather.temp + getSwitch() ));
+        article.appendChild(create('p', getThermIcon() + weather.temp + getSwitch(celsius,farenight) ));
         article.appendChild(getDetailsDiv());
         mainTag.appendChild(article);
         article.classList.add(weather.type.toLowerCase());
@@ -45,17 +47,9 @@ function waitForLocation() {
             if(html) { tag.innerHTML = html };
             return tag;
         }
-        function getThermIcon() {
-            var hotLvl = weather.temp / 6 > 4 ? 4 : weather.temp / 6;
-            hotLvl += 0.5;
-            hotLvl = Math.floor(hotLvl);
-            return '<i class="fa fa-thermometer-'+ hotLvl + '"></i> ';
-        }
+
         function getArrowIcon() {
             return '<i id="detail" class="fa fa-caret-right"></i> ';
-        }
-        function getSwitch() {
-           return ' &#8451;' +'<a class="switch">/&#8457;</a>'
         }
         function getDetailsDiv() {
             var x=0; 
@@ -100,4 +94,23 @@ function waitForLocation() {
             return details;
         }
     }
+}
+
+function switchMetric(el, farenightRequired){
+    var metric1 = farenightRequired ? farenight : celsius;
+    var metric2 = farenightRequired ? celsius : farenight;
+    var temp = farenightRequired ? weather.temp * 9 / 5 + 32 : weather.temp;
+    el.parentElement.innerHTML = getThermIcon() + temp + getSwitch(metric1,metric2)
+}
+
+function getSwitch(metric1, metric2) {
+    var farenightRequired = metric1 === celsius;
+    return ' ' + metric1 +'<a class="switch" onclick="switchMetric(this,'+farenightRequired+')">/'+ metric2 +'</a>'
+}
+
+function getThermIcon() {
+    var hotLvl = weather.temp / 6 > 4 ? 4 : weather.temp / 6;
+    hotLvl += 0.5;
+    hotLvl = Math.floor(hotLvl);
+    return '<i class="fa fa-thermometer-'+ hotLvl + '"></i> ';
 }

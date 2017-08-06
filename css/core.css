@@ -192,6 +192,6 @@ main {
 
 @media (min-width: 600px) {
   .weather-screen {
-    font-size: 1.5;
+    font-size: 1.5em;
   }
 }
