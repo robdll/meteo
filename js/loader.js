@@ -36,7 +36,7 @@ function waitForLocation() {
         article.appendChild(create('p', getThermIcon() + weather.temp + getSwitch() ));
         article.appendChild(getDetailsDiv());
         mainTag.appendChild(article);
-        article.classList.add(weather.type);
+        article.classList.add(weather.type.toLowerCase());
         article.classList.add('show');
         //internal function
         function create(tag, html){ 

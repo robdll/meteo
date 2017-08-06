@@ -109,20 +109,20 @@ main {
   user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
-.Clear {
+.clear {
   background-image: url("./../resources/clear.gif");
 }
 
-.Clouds {
+.clouds {
   background-image: url("./../resources/clouds.gif");
 }
 
-.Clear {
-  background-image: url("./../resources/clear.gif");
+.rain {
+  background-image: url("./../resources/rain.gif");
 }
 
-.Clear {
-  background-image: url("./../resources/clear.gif");
+.snow {
+  background-image: url("./../resources/snow.gif");
 }
 
 
