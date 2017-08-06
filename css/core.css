@@ -122,3 +122,27 @@ details {
   font-family: 'digital';
   src: url('../resources/digital.ttf');
 }
+
+.show {
+  -webkit-animation: fadeIn 2000ms;
+  -moz-animation: fadeIn 2000ms;
+  animation: fadeIn 2000ms;
+}
+
+.hide {
+  -webkit-animation: fadeIn 2000ms reverse;
+  -moz-animation: fadeIn 2000ms reverse;
+  animation: fadeIn 2000ms reverse;
+}
+
+@-moz-keyframes fadeIn {
+    from {opacity:0;} to {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn { 
+    from {opacity:0;} to {opacity:1;}
+}
+
+@keyframes fadeIn {
+    from {opacity:0;} to {opacity:1;}
+}
