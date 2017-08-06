@@ -1,8 +1,53 @@
 html, body {
   width: 100%;
   height: 100%;
-  background: gray;
+  background: #1b1b1c;
   margin: 0px;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: digital;
+  color: white;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  padding: 0px 15px;
+  box-sizing: border-box;
+}
+
+h1 {
+  color: white;
+  line-height: 2;
+  margin: 0px;
+  padding-left: 15px;
+  font-size: 3em;
+}
+
+.title {
+  flex-grow: 1;
+}
+
+.plus {
+  font-size: 8em;
+  line-height: normal;
+  font-weight: 500;
+}
+
+.plus:hover {
+  color: darkblue;
+  cursor: pointer;
+}
+
+#disclaimer {
+  line-height: 2;
+  text-align: center;
+  padding: 0px 20px;
 }
 
 main {
@@ -11,6 +56,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 3em;
 }
 
 .termometer {
@@ -72,6 +118,15 @@ main {
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently */
 }
 
 
