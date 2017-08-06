@@ -3,7 +3,7 @@
 function waitForLocation() {
     var loaderMsg = document.getElementById("disclaimer");
     var numberOfDot = 0;
-    var fakeWriter = setInterval(intertain ,500)
+    var fakeWriter = setInterval(intertain ,1000)
     function intertain(){
         if(window.hasLocation || window.locationError) {
             clearInterval(fakeWriter);
@@ -13,7 +13,7 @@ function waitForLocation() {
                     loaderMsg.outerHTML = '';
                     delete loaderMsg;
                     createWeatherScreen();
-                },1500)
+                },1000)
             }
         } else if(numberOfDot < 3){
             loaderMsg.innerHTML += '.';
@@ -72,16 +72,26 @@ function waitForLocation() {
                 if(!isAnimating){
                     isAnimating = true;
                     var iconClasses = details.firstChild.classList;
+                    var paragraphs = details.querySelectorAll("p");
                     var classToAdd = 'rotate-counter'
                     if(x%2===0) {
-                        classToAdd = 'rotate-clockwise'
-                    } 
-                    details.firstChild.classList.add(classToAdd);
+                        classToAdd = 'rotate-clockwise';
+                        details.firstChild.classList.add(classToAdd);
+                        for(var i=0; i<paragraphs.length; paragraphs[i++].classList.add('show'));
+                    } else {
+                        details.firstChild.classList.add(classToAdd);
+                        for(var i=0; i<paragraphs.length; paragraphs[i++].classList.add('hide'));
+                    }
                     x++;
                     setTimeout(function(){
                         if(x%2===0){
                             details.firstChild.classList.remove('rotate-counter');
                             details.firstChild.classList.remove('rotate-clockwise');
+                            for(var i=0; i<paragraphs.length; i++) {
+                                paragraphs[i].classList.remove('show');
+                                paragraphs[i].classList.remove('hide');
+                            }
+                            
                         }
                         isAnimating = false;
                     },800)

@@ -62,7 +62,6 @@ main {
 }
 
 .weather-screen {
-  background-image: url("./../resources/clear.gif");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -81,12 +80,15 @@ main {
   line-height: 1.8;
 }
 
-details {
+.details {
   font-size: 0.5em;
   margin-top: 15px;
   cursor: pointer;
   border:0px;
-  outline:none;
+}
+
+.details p {
+  opacity: 0;
 }
 
 .switch {
@@ -107,13 +109,20 @@ details {
   user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
-.noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently */
+.Clear {
+  background-image: url("./../resources/clear.gif");
+}
+
+.Clouds {
+  background-image: url("./../resources/clouds.gif");
+}
+
+.Clear {
+  background-image: url("./../resources/clear.gif");
+}
+
+.Clear {
+  background-image: url("./../resources/clear.gif");
 }
 
 
@@ -124,25 +133,58 @@ details {
 }
 
 .show {
-  -webkit-animation: fadeIn 2000ms;
-  -moz-animation: fadeIn 2000ms;
-  animation: fadeIn 2000ms;
+  -webkit-animation: fadeIn 1200ms linear forwards;
+  -moz-animation: fadeIn 1200ms linear forwards;
+  animation: fadeIn 1200ms linear forwards;
 }
 
 .hide {
-  -webkit-animation: fadeIn 2000ms reverse;
-  -moz-animation: fadeIn 2000ms reverse;
-  animation: fadeIn 2000ms reverse;
+  -webkit-animation: fadeOut 1200ms linear forwards;
+  -moz-animation: fadeOut 1200ms linear forwards;
+  animation: fadeOut 1200ms linear forwards;
 }
 
-@-moz-keyframes fadeIn {
-    from {opacity:0;} to {opacity:1;}
+.rotate-clockwise {
+  -webkit-animation: rotate 800ms 1 linear forwards;
+  -moz-animation: rotate 800ms 1 linear forwards;
+  animation: rotate 800ms 1 linear forwards;
 }
 
-@-webkit-keyframes fadeIn { 
-    from {opacity:0;} to {opacity:1;}
+.rotate-counter {
+  -webkit-animation: rotate-counter 800ms 1 linear forwards;
+  -moz-animation: rotate-counter 800ms 1 linear forwards;
+  animation: rotate-counter 800ms 1 linear forwards;
 }
 
 @keyframes fadeIn {
-    from {opacity:0;} to {opacity:1;}
+    0% {opacity:0;} 100% {opacity:1;}
+}
+@keyframes fadeOut {
+    0% {opacity:1;} 100% {opacity:0;}
+}
+
+@keyframes rotate { 
+  0% { 
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg); 
+    transform:rotate(0deg); 
+  } 
+  100% { 
+    -webkit-transform: rotate(90deg); 
+    -moz-transform: rotate(90deg);
+    transform:rotate(90deg); 
+  } 
+}
+
+@keyframes rotate-counter { 
+  0% { 
+    -moz-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg); 
+    transform:rotate(90deg); 
+  } 
+  100% { 
+    -webkit-transform: rotate(0deg); 
+    -moz-transform: rotate(0deg);
+    transform:rotate(0deg); 
+  } 
 }
