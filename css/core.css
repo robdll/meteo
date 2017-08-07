@@ -62,9 +62,6 @@ main {
 }
 
 .weather-screen {
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   padding: 110px 20px 10px 20px;  
@@ -107,6 +104,13 @@ main {
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+
+.clear, .clouds, .rain, .snow {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .clear {
@@ -200,4 +204,5 @@ main {
   .weather-screen {
     font-size: 1.5em;
   }
+
 }
