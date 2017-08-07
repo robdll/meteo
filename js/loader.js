@@ -38,8 +38,8 @@ function waitForLocation() {
         article.appendChild(create('p', getThermIcon() + weather.temp + getSwitch(celsius,farenight) ));
         article.appendChild(getDetailsDiv());
         mainTag.appendChild(article);
-        article.classList.add(weather.type.toLowerCase());
         article.classList.add('show');
+        document.body.classList.add(weather.type.toLowerCase());
         //internal function
         function create(tag, html){ 
             var tag = document.createElement(tag); 
