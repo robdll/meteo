@@ -57,7 +57,7 @@ function waitForLocation() {
             details.appendChild(create('p', 'Humidity: '+weather.humidity ));
             details.appendChild(create('p', 'Pressure: '+weather.pressure ));
             details.appendChild(create('p', 'Min: '+weather.temp_min +' &#176;C' ));
-            details.appendChild(create('p', 'Max:'+weather.temp_max +' &#176;C' ));
+            details.appendChild(create('p', 'Max: '+weather.temp_max +' &#176;C' ));
             return details;
         }
     }
@@ -72,7 +72,7 @@ function switchMetric(el, farenightRequired){
     detail.removeChild(detail.lastChild);
     detail.removeChild(detail.lastChild);
     detail.appendChild(create('p', 'Min: '+ (farenightRequired ? weather.temp_min * 9 / 5 + 32  : weather.temp_min) + ' &#176;'+(farenightRequired ? 'F' : 'C') ));
-    detail.appendChild(create('p', 'Max:' + (farenightRequired ? weather.temp_max * 9 / 5 + 32  : weather.temp_max) + ' &#176;'+(farenightRequired ? 'F' : 'C') ));
+    detail.appendChild(create('p', 'Max: ' + (farenightRequired ? weather.temp_max * 9 / 5 + 32  : weather.temp_max) + ' &#176;'+(farenightRequired ? 'F' : 'C') ));
 }
 
 function getSwitch(metric1, metric2) {
