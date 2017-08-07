@@ -25,21 +25,21 @@ header {
 
 .main-metric {
     font-weight: 700;
-    font-size: 1.4em;
+    font-size: 0.8em;
     margin: 0px;
     line-height: 1.1;
 }
 
 .second-metric {
     font-weight: 700;
-    font-size: 1em;
+    font-size: 0.8em;
     margin: 0px 0px 35px 0px;
     line-height: 1.1;
 }
 
 .third-metric {   
-    font-weight: 500;
-    font-size: 0.3em;
+    font-weight: 700;
+    font-size: 0.4em;
     margin: 0px 0px 30px 0px;
     line-height: 1.1;
     padding-left: 5px;
@@ -92,25 +92,20 @@ main {
 .weather-screen {
   display: flex;
   flex-direction: column;
-  padding: 40px 20px 10px 60px;  
+  padding: 40px 20px 10px 30px;  
   text-shadow: 1px 1px 6px black;
   width: 100%;
   box-sizing: border-box;
-  font-size: 0.6em;
-}
-details p {
-    margin: 0px;
-    line-height: 1.1;
-  }
-
-.details {
-  font-size: 0.5em;
-  border:0px;
 }
 
 .details p {
   margin: 0px 0px 5px 0px;
-  font-weight: 700;
+  line-height: 1.1;
+  font-size: 0.4em;    
+}
+
+.details {
+  border:0px;
 }
 
 .switch {
@@ -174,15 +169,60 @@ details p {
 }
 
 
-@media (min-width: 400px) {
-  .weather-screen {
-    font-size: 1.1em;
+@media (min-width: 450px) {
+  .main-metric {
+    font-size: 1em;
+  }
+  .second-metric  {
+    font-size: 1em;
+  }
+  .third-metric {
+    font-size: 0.5em;
+  }
+  .details p {
+    font-size: 0.5em;
   }
 }
 
 @media (min-width: 600px) {
-  .weather-screen {
+  .main-metric, .second-metric {
     font-size: 1.5em;
   }
-
+  .third-metric {
+    font-size: 0.6em;
+  }
+  .details p {
+    font-size: 0.5em;
+  }
 }
+
+@media (min-width: 750px) {
+  .main-metric, .second-metric {
+    font-size: 1.8em;
+  }
+  .third-metric {
+    font-size: 0.7em;
+  }
+  .details p {
+    font-size: 0.6em;
+  }
+}
+
+@media (min-width: 850px) {
+  .main-metric, .second-metric {
+    font-size: 2em;
+  }
+  .third-metric {
+    font-size: 0.7em;
+  }
+  .details p {
+    font-size: 0.7em;
+  }
+}
+
+@media (min-width: 930px) {
+  .main-metric, .second-metric {
+    font-size: 2.2em;
+  }
+}
+
