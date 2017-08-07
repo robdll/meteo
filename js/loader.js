@@ -30,20 +30,18 @@ function waitForLocation() {
         mainTag = document.getElementsByTagName("MAIN")[0];
         article = create('ARTICLE');
         article.classList.add("weather-screen");
-        article.appendChild(create('p', weather.city + ' - ' + weather.country, 'secondary-metric' ));
+        article.appendChild(create('p', getTimeAndCity(), 'third-metric' ));
         article.appendChild(create('p', weather.description, 'main-metric' ));
-        article.appendChild(create('p', getThermIcon() + weather.temp + getSwitch('C','F'), 'main-metric'  ));
+        article.appendChild(create('p', weather.temp + getSwitch('C','F'), 'second-metric'  ));
         article.appendChild(getDetailsDiv());
         mainTag.appendChild(article);
         article.classList.add('show');
         document.body.classList.add(weather.type.toLowerCase());
         //internal function
-        function create(tag, html, css) { 
-            var tag = document.createElement(tag); 
-            tag.classList.add("noselect");
-            if(html) { tag.innerHTML = html };
-            if(css) { tag.classList.add(css); }
-            return tag;
+        function getTimeAndCity() {
+            var time = new Date().getHours() + ":" + new Date().getMinutes() + ' - ' 
+            var city = weather.city.toUpperCase() + ' ' + weather.country;
+            return time + ' ' + city;
         }
 
         function getArrowIcon() {
@@ -53,42 +51,13 @@ function waitForLocation() {
             var x=0; 
             var isAnimating = false;
             var detais;
-            details = create('div', getArrowIcon() + ' Details' );
+            details = create('div');
             details.classList.add('noselect');
             details.classList.add('details');
-            details.appendChild(create('p', 'humidity: '+weather.humidity ));
-            details.appendChild(create('p', 'pressure: '+weather.pressure ));
-            details.appendChild(create('p', 'min: '+weather.temp_min ));
-            details.appendChild(create('p', 'max: '+weather.temp_max ));
-            details.addEventListener("click", function() {
-                if(!isAnimating){
-                    isAnimating = true;
-                    var iconClasses = details.firstChild.classList;
-                    var paragraphs = details.querySelectorAll("p");
-                    var classToAdd = 'rotate-counter'
-                    if(x%2===0) {
-                        classToAdd = 'rotate-clockwise';
-                        details.firstChild.classList.add(classToAdd);
-                        for(var i=0; i<paragraphs.length; paragraphs[i++].classList.add('show'));
-                    } else {
-                        details.firstChild.classList.add(classToAdd);
-                        for(var i=0; i<paragraphs.length; paragraphs[i++].classList.add('hide'));
-                    }
-                    x++;
-                    setTimeout(function(){
-                        if(x%2===0){
-                            details.firstChild.classList.remove('rotate-counter');
-                            details.firstChild.classList.remove('rotate-clockwise');
-                            for(var i=0; i<paragraphs.length; i++) {
-                                paragraphs[i].classList.remove('show');
-                                paragraphs[i].classList.remove('hide');
-                            }
-                            
-                        }
-                        isAnimating = false;
-                    },800)
-                }
-            });
+            details.appendChild(create('p', 'Humidity: '+weather.humidity ));
+            details.appendChild(create('p', 'Pressure: '+weather.pressure ));
+            details.appendChild(create('p', 'Min: '+weather.temp_min +' &#176;C' ));
+            details.appendChild(create('p', 'Max:'+weather.temp_max +' &#176;C' ));
             return details;
         }
     }
@@ -98,17 +67,23 @@ function switchMetric(el, farenightRequired){
     var metric1 = farenightRequired ? 'F' : 'C';
     var metric2 = farenightRequired ? 'C' : 'F';
     var temp = farenightRequired ? weather.temp * 9 / 5 + 32 : weather.temp;
-    el.parentElement.innerHTML = getThermIcon() + temp + getSwitch(metric1,metric2)
+    el.parentElement.innerHTML = temp + getSwitch(metric1,metric2);
+    var detail = document.getElementsByClassName("details")[0];
+    detail.removeChild(detail.lastChild);
+    detail.removeChild(detail.lastChild);
+    detail.appendChild(create('p', 'Min: '+ (farenightRequired ? weather.temp_min * 9 / 5 + 32  : weather.temp_min) + ' &#176;'+(farenightRequired ? 'F' : 'C') ));
+    detail.appendChild(create('p', 'Max:' + (farenightRequired ? weather.temp_max * 9 / 5 + 32  : weather.temp_max) + ' &#176;'+(farenightRequired ? 'F' : 'C') ));
 }
 
 function getSwitch(metric1, metric2) {
     var farenightRequired = metric1 === 'C';
-    return ' ' + metric1 +'<a class="switch" onclick="switchMetric(this,'+farenightRequired+')">/'+ metric2 +'</a>'
+    return ' &#176;' + metric1 +'<a class="switch" onclick="switchMetric(this,'+farenightRequired+')">/&#176;'+ metric2 +'</a>'
 }
 
-function getThermIcon() {
-    var hotLvl = weather.temp / 6 > 4 ? 4 : weather.temp / 6;
-    hotLvl += 0.5;
-    hotLvl = Math.floor(hotLvl);
-    return '<i class="fa fa-thermometer-'+ hotLvl + '"></i> ';
+function create(tag, html, css) { 
+    var tag = document.createElement(tag); 
+    tag.classList.add("noselect");
+    if(html) { tag.innerHTML = html };
+    if(css) { tag.classList.add(css); }
+    return tag;
 }

@@ -38,7 +38,7 @@ function getMeteo(location) {
             sunrise: data.sys.sunrise,
             sunset: data.sys.sunset,
             type: data.weather[0].main,
-            description: data.weather[0].description,
+            description: data.weather[0].description.split(' ').map(function(word) { return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() } ).join(' '),
             icon: data.weather[0].icon,
         }
         window.hasLocation = true;
