@@ -103,7 +103,7 @@ function switchMetric(el, farenightRequired){
 
 function getSwitch(metric1, metric2) {
     var farenightRequired = metric1 === 'C';
-    return ' ' + metric1 +'°<a class="switch" onclick="switchMetric(this,'+farenightRequired+')">/'+ metric2 +'°</a>'
+    return ' ' + metric1 +'<a class="switch" onclick="switchMetric(this,'+farenightRequired+')">/'+ metric2 +'</a>'
 }
 
 function getThermIcon() {
