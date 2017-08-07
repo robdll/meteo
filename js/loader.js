@@ -1,7 +1,4 @@
 
-var celsius = '&#8451;';
-var farenight = '&#8457;';
-
 function waitForLocation() {
     var loaderMsg = document.getElementById("disclaimer");
     var numberOfDot = 0;
@@ -33,18 +30,19 @@ function waitForLocation() {
         mainTag = document.getElementsByTagName("MAIN")[0];
         article = create('ARTICLE');
         article.classList.add("weather-screen");
-        article.appendChild(create('p', weather.city + ' - ' + weather.country ));
-        article.appendChild(create('p', weather.description));
-        article.appendChild(create('p', getThermIcon() + weather.temp + getSwitch(celsius,farenight) ));
+        article.appendChild(create('p', weather.city + ' - ' + weather.country, 'secondary-metric' ));
+        article.appendChild(create('p', weather.description, 'main-metric' ));
+        article.appendChild(create('p', getThermIcon() + weather.temp + getSwitch('C','F'), 'main-metric'  ));
         article.appendChild(getDetailsDiv());
         mainTag.appendChild(article);
         article.classList.add('show');
         document.body.classList.add(weather.type.toLowerCase());
         //internal function
-        function create(tag, html){ 
+        function create(tag, html, css) { 
             var tag = document.createElement(tag); 
             tag.classList.add("noselect");
             if(html) { tag.innerHTML = html };
+            if(css) { tag.classList.add(css); }
             return tag;
         }
 
@@ -97,15 +95,15 @@ function waitForLocation() {
 }
 
 function switchMetric(el, farenightRequired){
-    var metric1 = farenightRequired ? farenight : celsius;
-    var metric2 = farenightRequired ? celsius : farenight;
+    var metric1 = farenightRequired ? 'F' : 'C';
+    var metric2 = farenightRequired ? 'C' : 'F';
     var temp = farenightRequired ? weather.temp * 9 / 5 + 32 : weather.temp;
     el.parentElement.innerHTML = getThermIcon() + temp + getSwitch(metric1,metric2)
 }
 
 function getSwitch(metric1, metric2) {
-    var farenightRequired = metric1 === celsius;
-    return ' ' + metric1 +'<a class="switch" onclick="switchMetric(this,'+farenightRequired+')">/'+ metric2 +'</a>'
+    var farenightRequired = metric1 === 'C';
+    return ' ' + metric1 +'°<a class="switch" onclick="switchMetric(this,'+farenightRequired+')">/'+ metric2 +'°</a>'
 }
 
 function getThermIcon() {
