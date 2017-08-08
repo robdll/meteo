@@ -39,9 +39,9 @@ function waitForLocation() {
         document.body.classList.add(weather.type.toLowerCase());
         //internal function
         function getTimeAndCity() {
-            var time = new Date().getHours() + ":" + new Date().getMinutes() + ' - ' 
+            var time = new Date().getHours() + ":" + ('0'+new Date().getMinutes()).slice(-2);
             var city = weather.city.toUpperCase() + ' ' + weather.country;
-            return time + ' ' + city;
+            return time + ' - ' + city;
         }
 
         function getArrowIcon() {
